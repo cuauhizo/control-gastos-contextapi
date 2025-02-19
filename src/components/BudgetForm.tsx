@@ -15,7 +15,7 @@ export default function BudgetForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Añadir o definir presuúesto');
+    // console.log('Añadir o definir presuúesto');
     dispatch({ type: 'add-budget', payload: { budget } });
   };
 

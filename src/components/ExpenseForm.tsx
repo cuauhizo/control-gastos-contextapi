@@ -21,10 +21,10 @@ export default function ExpenseForm() {
   const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     const isAmountField = ['amount'].includes(name);
-    console.log(isAmountField);
+
     setExpense({
       ...expense,
-      [name]: isAmountField ? +value : value,
+      [name]: isAmountField ? Number(value) : value,
     });
   };
 
@@ -60,9 +60,13 @@ export default function ExpenseForm() {
       className="space-y-5"
       onSubmit={handleSubmit}>
       <legend className="uppercase text-center text-2xl font-black border-b-4 border-blue-500 py-2">Nuevo Gasto</legend>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       <div className="flex flex-col gap-2">
-        <label htmlFor="expenseName">Nombre Gasto:</label>
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+        <label
+          htmlFor="expenseName"
+          className="text-xl">
+          Nombre Gasto:
+        </label>
         <input
           type="text"
           id="expenseName"
@@ -74,7 +78,11 @@ export default function ExpenseForm() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <label htmlFor="amount">Cantidad:</label>
+        <label
+          htmlFor="amount"
+          className="text-xl">
+          Cantidad:
+        </label>
         <input
           type="number"
           id="amount"
@@ -86,7 +94,11 @@ export default function ExpenseForm() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <label htmlFor="category">Categoria:</label>
+        <label
+          htmlFor="category"
+          className="text-xl">
+          Categoria:
+        </label>
         <select
           id="category"
           className="bg-slate-100 p-2"
@@ -104,7 +116,11 @@ export default function ExpenseForm() {
         </select>
       </div>
       <div className="flex flex-col gap-2">
-        <label htmlFor="amount">Fecha Gasto:</label>
+        <label
+          htmlFor="amount"
+          className="text-xl">
+          Fecha Gasto:
+        </label>
         <DatePicker
           className="bg-slate-100 p-2 border-0"
           value={expense.date}
